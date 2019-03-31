@@ -1,0 +1,7 @@
+{
+  "name": "smao-wallpapers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
