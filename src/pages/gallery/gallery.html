@@ -1,3 +1,19 @@
 <ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" [pullingText]="refreshingText.PULLING_TEXT" refreshingSpinner="circles"
+      [refreshingText]="refreshingText.REFRESHING_TEXT">
+    </ion-refresher-content>
+  </ion-refresher>
 
+  <div *ngFor="let img of images">
+    <ion-card (click)="click(img)">
+      <ion-card-content>
+        <ion-row text-center>
+          <ion-col col-12>
+            <img [src]="img.url" />
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

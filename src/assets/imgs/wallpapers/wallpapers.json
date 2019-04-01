@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "name": "00",
+        "url": "assets/imgs/wallpapers/img/00.jpg"
+    },
+    {
+        "id": 1,
+        "name": "01",
+        "url": "assets/imgs/wallpapers/img/01.jpg"
+    },
+    {
+        "id": 2,
+        "name": "02",
+        "url": "assets/imgs/wallpapers/img/02.jpg"
+    },
+    {
+        "id": 3,
+        "name": "03",
+        "url": "assets/imgs/wallpapers/img/03.jpg"
+    },
+    {
+        "id": 4,
+        "name": "04",
+        "url": "assets/imgs/wallpapers/img/04.jpg"
+    },
+    {
+        "id": 5,
+        "name": "05",
+        "url": "assets/imgs/wallpapers/img/05.jpg"
+    }
+]

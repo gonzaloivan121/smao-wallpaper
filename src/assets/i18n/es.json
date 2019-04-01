@@ -1,5 +1,8 @@
 {
   "ABOUT": "Sobre",
   "CONTACT": "Contacto",
-  "GALLERY": "Galería"
+  "GALLERY": "Galería",
+
+  "PULLING_TEXT": "Suelta para actualizar",
+  "REFRESHING_TEXT": "Actualizando..."
 }

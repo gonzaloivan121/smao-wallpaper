@@ -11,8 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class TabsPage {
 
   pages = [
-    { pageName: 'AboutPage', title: 'ABOUT', icon: 'help-circle', id: 'aboutTab' },
     { pageName: 'GalleryPage', title: 'GALLERY', icon: 'body', id: 'galleryTab' },
+    { pageName: 'AboutPage', title: 'ABOUT', icon: 'help-circle', id: 'aboutTab' },
     { pageName: 'ContactPage', title: 'CONTACT', icon: 'contacts', id: 'contactTab' }
   ];
 
