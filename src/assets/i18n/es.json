@@ -5,5 +5,9 @@
 
   "PULLING_TEXT": "Suelta para actualizar",
   "REFRESHING_TEXT": "Actualizando...",
-  "LOADING": "Cargando..."
+  "LOADING": "Cargando...",
+
+  "ALERT_TITLE": "No es un dispositivo",
+  "ALERT_SUBTITLE": "No estás ejecutando la aplicación en un dispositivo",
+  "OK": "Ir a la foto"
 }

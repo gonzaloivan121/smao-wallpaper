@@ -45,12 +45,7 @@ export class TabsPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.selectedTab)
-    if (this.superTabs.id == 'galleryTab' && this.showTab) {
-      this.superTabs.enableTabSwipe('galleryTab', true);
-    } else {
-      this.superTabs.enableTabSwipe('galleryTab', false);
-    }
+    //this.superTabs.enableTabSwipe('galleryTab', true);
     
   }
 
@@ -60,6 +55,11 @@ export class TabsPage {
   }
 
   onTabSelect(ev: any) {
+    var top = window.pageYOffset || document.documentElement.scrollTop,
+      left = window.pageXOffset || document.documentElement.scrollLeft;
+    if (top > 0) {
+      
+    }
     console.log(ev)
     this.selectedTab = ev.index;
     this.superTabs.clearBadge(this.pages[ev.index].id);

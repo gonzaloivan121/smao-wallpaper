@@ -5,5 +5,9 @@
 
     "PULLING_TEXT": "Pull to refresh",
     "REFRESHING_TEXT": "Refreshing...",
-    "LOADING": "Loading..."
+    "LOADING": "Loading...",
+
+    "ALERT_TITLE": "Not a Device",
+    "ALERT_SUBTITLE": "You are not in a device",
+    "OK": "Go to the picture"
   }

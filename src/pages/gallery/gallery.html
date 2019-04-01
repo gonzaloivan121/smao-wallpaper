@@ -1,5 +1,5 @@
 <ion-content padding>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)" class="push-to-update">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       [pullingText]="refreshingText.PULLING_TEXT"
@@ -9,9 +9,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <div *ngFor="let img of images">
-
-    <ion-card>
+    <ion-card *ngFor="let img of images" [class]="this.screenSize.width > 768 ? 'card card-md computer' : 'card card-md'" [style]="this.cardWidth">
 
       <img [src]="img.url" (click)="click(img)" />
 
@@ -20,7 +18,7 @@
           {{ img.name }}
         </ion-card-title>
         <p>
-            Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.
+          {{ img.description }}
         </p>
 
         <ion-row no-padding>
@@ -30,6 +28,7 @@
               Favorite
             </button>
           </ion-col>
+
           <ion-col text-center>
             <button ion-button clear small color="secondary" icon-start>
               <ion-icon name='musical-notes'></ion-icon>
@@ -47,5 +46,4 @@
       </ion-card-content>
     </ion-card>
 
-  </div>
 </ion-content>

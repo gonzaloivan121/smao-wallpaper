@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
+import { Platform } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,18 +14,31 @@ export class GalleryPage {
   images: Array<any> = [];
   refreshingText: any = {};
 
+  screenSize: { width: number, height: number } = {
+    width: window.innerWidth,
+    height: window.innerHeight
+  };
+
+  cardWidth: string = this.screenSize.width > 768 ? "width: " + (this.screenSize.width / 3).toFixed(1) + "px" : "";
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public api: ApiProvider,
     public translate: TranslateService,
-    public loader: LoadingController
+    public loader: LoadingController,
+    public platform: Platform,
+    public alert: AlertController
   ) {
     this.getImages();
 
     this.translate.get(["PULLING_TEXT", "REFRESHING_TEXT"]).subscribe(val => {
       this.refreshingText = val;
     });
+  }
+
+  ionViewDidLoad() {
+    console.log(this.screenSize)
   }
 
   doRefresh(refresher) {
@@ -65,7 +79,25 @@ export class GalleryPage {
   }
 
   click(img: { id: number, name: string, url: string, description: string }) {
-    this.navCtrl.setRoot('ImageViewPage', { img: img });
+    
+
+    this.platform.ready().then(() => {
+      if (this.platform.is("android")) {
+        console.log(window);
+      } else {
+        var alert;
+
+        this.translate.get(["ALERT_TITLE", "ALERT_SUBTITLE", "OK"]).subscribe(val => {
+          alert = this.alert.create({
+            title: val.ALERT_TITLE,
+            subTitle: val.ALERT_SUBTITLE,
+            buttons: [val.ok]
+          });
+        });
+        alert.present();
+      }
+    });
+
   }
 
 }
