@@ -64,8 +64,8 @@ export class GalleryPage {
     });
   }
 
-  click(img: { id: number, name: string, url: string }) {
-    console.log(img)
+  click(img: { id: number, name: string, url: string, description: string }) {
+    this.navCtrl.setRoot('ImageViewPage', { img: img });
   }
 
 }

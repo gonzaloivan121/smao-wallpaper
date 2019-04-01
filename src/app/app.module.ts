@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { ApiProvider } from '../providers/api/api';
 import { CommonModule } from "@angular/common";
+import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

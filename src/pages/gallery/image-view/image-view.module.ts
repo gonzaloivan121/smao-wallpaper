@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GalleryPage } from './gallery';
-import { ComponentsModule } from '../../components/components.module';
+import { ImageViewPage } from './image-view';
+import { ComponentsModule } from '../../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
-        GalleryPage
+        ImageViewPage
     ],
     imports: [
         ComponentsModule,
-        IonicPageModule.forChild(GalleryPage),
+        IonicPageModule.forChild(ImageViewPage),
         TranslateModule.forChild()
     ],
 })
-export class GalleryPageModule { }
+export class ImageViewPageModule { }

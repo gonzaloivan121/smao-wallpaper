@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, IonicPage, NavParams, AlertController } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,7 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
+  config = {
+    pageName: 'GalleryPage',
+    title: 'GALLERY',
+    icon: 'body',
+    id: 'galleryTab'
+  };
+  
   pages = [
     { pageName: 'GalleryPage', title: 'GALLERY', icon: 'body', id: 'galleryTab' },
     { pageName: 'AboutPage', title: 'ABOUT', icon: 'help-circle', id: 'aboutTab' },
@@ -17,6 +23,7 @@ export class TabsPage {
   ];
 
   selectedTab = 0;
+  showTab = true;
 
   @ViewChild(SuperTabs) superTabs: SuperTabs;
 
@@ -33,7 +40,27 @@ export class TabsPage {
     });
   }
 
+  ngOnInit() {
+    
+  }
+
+  ionViewDidLoad() {
+    console.log(this.selectedTab)
+    if (this.superTabs.id == 'galleryTab' && this.showTab) {
+      this.superTabs.enableTabSwipe('galleryTab', true);
+    } else {
+      this.superTabs.enableTabSwipe('galleryTab', false);
+    }
+    
+  }
+
+  toogleToolbar() {
+    this.showTab = !this.showTab;
+    this.superTabs.showToolbar(this.showTab);
+  }
+
   onTabSelect(ev: any) {
+    console.log(ev)
     this.selectedTab = ev.index;
     this.superTabs.clearBadge(this.pages[ev.index].id);
   }

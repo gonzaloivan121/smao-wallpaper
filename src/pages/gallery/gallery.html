@@ -11,9 +11,9 @@
 
   <div *ngFor="let img of images">
 
-    <ion-card (click)="click(img)">
+    <ion-card>
 
-      <img [src]="img.url" />
+      <img [src]="img.url" (click)="click(img)" />
 
       <ion-card-content>
         <ion-card-title>
