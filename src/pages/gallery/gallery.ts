@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -17,7 +17,8 @@ export class GalleryPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public api: ApiProvider,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public loader: LoadingController
   ) {
     this.getImages();
 
@@ -29,10 +30,30 @@ export class GalleryPage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    if (this.images.length > 0) {
+      let loading;
+      this.translate.get("LOADING").subscribe(val => {
+        loading = this.loader.create({
+          spinner: "dots",
+          content: val
+        });
+      });
+      
+      loading.present();
+
+      setTimeout(() => {
+        this.images = [];
+        this.getImages();
+        loading.dismiss();
+        refresher.complete();
+
+        console.log('Async operation has ended');
+      }, 1000);
+    }
+  }
+
+  doPulling(pull) {
+    pull.pullMax = 200;
   }
 
   getImages() {

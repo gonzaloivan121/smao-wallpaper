@@ -1,19 +1,51 @@
 <ion-content padding>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" [pullingText]="refreshingText.PULLING_TEXT" refreshingSpinner="circles"
-      [refreshingText]="refreshingText.REFRESHING_TEXT">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      [pullingText]="refreshingText.PULLING_TEXT"
+      refreshingSpinner="circles"
+      [refreshingText]="refreshingText.REFRESHING_TEXT"
+    >
     </ion-refresher-content>
   </ion-refresher>
 
   <div *ngFor="let img of images">
+
     <ion-card (click)="click(img)">
+
+      <img [src]="img.url" />
+
       <ion-card-content>
-        <ion-row text-center>
-          <ion-col col-12>
-            <img [src]="img.url" />
+        <ion-card-title>
+          {{ img.name }}
+        </ion-card-title>
+        <p>
+            Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.
+        </p>
+
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="secondary" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="secondary" icon-start>
+              <ion-icon name='musical-notes'></ion-icon>
+              Listen
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="secondary" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
           </ion-col>
         </ion-row>
+
       </ion-card-content>
     </ion-card>
+
   </div>
 </ion-content>

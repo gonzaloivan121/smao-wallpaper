@@ -4,5 +4,6 @@
   "GALLERY": "Galería",
 
   "PULLING_TEXT": "Suelta para actualizar",
-  "REFRESHING_TEXT": "Actualizando..."
+  "REFRESHING_TEXT": "Actualizando...",
+  "LOADING": "Cargando..."
 }

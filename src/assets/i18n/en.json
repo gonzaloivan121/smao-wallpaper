@@ -4,5 +4,6 @@
     "GALLERY": "Gallery",
 
     "PULLING_TEXT": "Pull to refresh",
-    "REFRESHING_TEXT": "Refreshing..."
+    "REFRESHING_TEXT": "Refreshing...",
+    "LOADING": "Loading..."
   }
