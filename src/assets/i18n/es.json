@@ -1,13 +1,20 @@
 {
-  "ABOUT": "Sobre",
-  "CONTACT": "Contacto",
-  "GALLERY": "Galería",
+    "ABOUT": "Sobre",
+    "CONTACT": "Contacto",
+    "GALLERY": "Galería",
 
-  "PULLING_TEXT": "Suelta para actualizar",
-  "REFRESHING_TEXT": "Actualizando...",
-  "LOADING": "Cargando...",
+    "PULLING_TEXT": "Suelta para actualizar",
+    "REFRESHING_TEXT": "Actualizando...",
+    "LOADING": "Cargando...",
 
-  "ALERT_TITLE": "No es un dispositivo",
-  "ALERT_SUBTITLE": "No estás ejecutando la aplicación en un dispositivo",
-  "OK": "Ir a la foto"
+    "ALERT_TITLE": "No es un dispositivo",
+    "ALERT_SUBTITLE": "No estás ejecutando la aplicación en un dispositivo",
+    "OK": "Ir a la foto",
+
+    "CLOSE_TITLE": "Terminar la app",
+    "CLOSE_MESSAGE": "¿Desea cerrar la aplicación?",
+    "CLOSE_CANCEL": "Cancelar",
+    "CLOSE_ACCEPT": "Cerrar App",
+
+    "STARTING": "Iniciando..."
 }

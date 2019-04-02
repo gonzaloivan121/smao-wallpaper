@@ -9,5 +9,12 @@
 
     "ALERT_TITLE": "Not a Device",
     "ALERT_SUBTITLE": "You are not in a device",
-    "OK": "Go to the picture"
+    "OK": "Go to the picture",
+
+    "CLOSE_TITLE": "App termination",
+    "CLOSE_MESSAGE": "Do you want to close the app?",
+    "CLOSE_CANCEL": "Cancel",
+    "CLOSE_ACCEPT": "Close App",
+
+    "STARTING": "Starting..."
   }

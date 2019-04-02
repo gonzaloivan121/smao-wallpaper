@@ -1,7 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, IonicPage, NavParams, AlertController } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, AlertController, Platform } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
+import { Events } from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -9,12 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  config = {
-    pageName: 'GalleryPage',
-    title: 'GALLERY',
-    icon: 'body',
-    id: 'galleryTab'
-  };
   
   pages = [
     { pageName: 'GalleryPage', title: 'GALLERY', icon: 'body', id: 'galleryTab' },
@@ -30,12 +26,21 @@ export class TabsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public events: Events,
+    public platform: Platform
   ) {
     this.pages.forEach(page => {
       this.translate.get(page.title).subscribe(val => {
         page.title = val;
+      });
+    });
+    
+    this.platform.ready().then((ready) => {
+      events.subscribe('app:backbuttonexit', (allowed) => {
+        if (!allowed) {
+          this.onTabSelect(null);
+        }
       });
     });
   }
@@ -46,23 +51,24 @@ export class TabsPage {
 
   ionViewDidLoad() {
     //this.superTabs.enableTabSwipe('galleryTab', true);
-    
   }
 
   toogleToolbar() {
     this.showTab = !this.showTab;
     this.superTabs.showToolbar(this.showTab);
+    this.events.publish('tabs:toogle', this.showTab);
   }
 
-  onTabSelect(ev: any) {
-    var top = window.pageYOffset || document.documentElement.scrollTop,
-      left = window.pageXOffset || document.documentElement.scrollLeft;
-    if (top > 0) {
-      
+  onTabSelect(ev?: any) {
+    if (ev != null) {
+      this.selectedTab = ev.index;
+      this.superTabs.clearBadge(this.pages[ev.index].id);
+    } else {
+      this.selectedTab = 0;
+      this.superTabs.clearBadge(this.pages[0].id);
+      this.superTabs.slideTo(this.selectedTab);
     }
-    console.log(ev)
-    this.selectedTab = ev.index;
-    this.superTabs.clearBadge(this.pages[ev.index].id);
+    
   }
 
 }

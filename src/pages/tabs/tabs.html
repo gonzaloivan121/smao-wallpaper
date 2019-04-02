@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <super-tabs [config]="config" tabsPlacement="top" toolbarBackground="secondary" toolbarColor="light" indicatorColor="light"
+  <super-tabs [config]="config" tabsPlacement="top" toolbarBackground="greenMain" toolbarColor="light" indicatorColor="light"
     (tabSelect)="onTabSelect($event)">
     <super-tab *ngFor="let page of pages" [root]="page.pageName" [icon]="page.icon" [id]="page.id"></super-tab>
   </super-tabs>

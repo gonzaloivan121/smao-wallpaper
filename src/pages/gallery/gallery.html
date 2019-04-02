@@ -9,7 +9,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-    <ion-card *ngFor="let img of images" [class]="this.screenSize.width > 768 ? 'card card-md computer' : 'card card-md'" [style]="this.cardWidth">
+    <ion-card *ngFor="let img of images">
 
       <img [src]="img.url" (click)="click(img)" />
 

@@ -1,3 +1,6 @@
 page-tabs {
-
+    ion-header.header ion-navbar.toolbar div.toolbar-background,
+    ion-content.content super-tabs super-tabs-toolbar ion-toolbar.toolbar div.toolbar-background {
+        background: #32db64 !important;
+    }
 }

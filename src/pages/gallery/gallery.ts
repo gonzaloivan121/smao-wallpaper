@@ -14,21 +14,13 @@ export class GalleryPage {
   images: Array<any> = [];
   refreshingText: any = {};
 
-  screenSize: { width: number, height: number } = {
-    width: window.innerWidth,
-    height: window.innerHeight
-  };
-
-  cardWidth: string = this.screenSize.width > 768 ? "width: " + (this.screenSize.width / 3).toFixed(1) + "px" : "";
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public api: ApiProvider,
     public translate: TranslateService,
     public loader: LoadingController,
-    public platform: Platform,
-    public alert: AlertController
+    public platform: Platform
   ) {
     this.getImages();
 
@@ -38,7 +30,7 @@ export class GalleryPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.screenSize)
+    
   }
 
   doRefresh(refresher) {
@@ -67,7 +59,7 @@ export class GalleryPage {
   }
 
   doPulling(pull) {
-    pull.pullMax = 200;
+    pull.pullMax = 250;
   }
 
   getImages() {
@@ -79,25 +71,25 @@ export class GalleryPage {
   }
 
   click(img: { id: number, name: string, url: string, description: string }) {
-    
-
     this.platform.ready().then(() => {
-      if (this.platform.is("android")) {
-        console.log(window);
-      } else {
-        var alert;
 
-        this.translate.get(["ALERT_TITLE", "ALERT_SUBTITLE", "OK"]).subscribe(val => {
-          alert = this.alert.create({
-            title: val.ALERT_TITLE,
-            subTitle: val.ALERT_SUBTITLE,
-            buttons: [val.ok]
-          });
-        });
-        alert.present();
+    var loading = this.loader.create();
+    loading.present();
+
+      if (this.platform.is("android")) {
+        var appMinimizer = window["plugins"].appMinimize;
+        
+        if (appMinimizer) {
+          loading.dismiss();
+          appMinimizer.minimize();
+
+          var wallpaper = window["plugins"].wallpaper;
+          if (wallpaper) {
+            wallpaper.setImage(img.url);
+          }
+        }
       }
     });
-
   }
 
 }
