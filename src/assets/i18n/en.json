@@ -16,5 +16,14 @@
     "CLOSE_CANCEL": "Cancel",
     "CLOSE_ACCEPT": "Close App",
 
-    "STARTING": "Starting..."
+    "STARTING": "Starting...",
+
+    "INFO": "Information",
+    "ADD_FAVOURITES": "Add to favourites",
+    "USE_AS": "Use as",
+    "PRINT": "Print",
+    "EDIT": "Edit",
+    "SHARE": "Share",
+
+    "COMING_SOON": "Coming soon..."
   }

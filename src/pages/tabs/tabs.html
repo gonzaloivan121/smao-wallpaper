@@ -1,7 +1,10 @@
-<ion-header no-border>
+<ion-header no-border [class]="tabsClass">
   <ion-navbar color="secondary">
     <ion-title>{{ pages[selectedTab].title }}</ion-title>
     <ion-buttons end>
+      <button ion-button (click)="menu($event)" *ngIf="tabsClass !== ''" style="margin-right: 15px !important;">
+        <ion-icon name="more"></ion-icon>
+      </button>
       <button ion-button (click)="toogleToolbar()">
         <ion-icon name="arrow-up" *ngIf="showTab"></ion-icon>
         <ion-icon name="arrow-down" *ngIf="!showTab"></ion-icon>
@@ -10,8 +13,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <super-tabs [config]="config" tabsPlacement="top" toolbarBackground="greenMain" toolbarColor="light" indicatorColor="light"
+<ion-content [class]="tabsClass">
+  <super-tabs [config]="config" enabled="false" tabsPlacement="top" toolbarBackground="greenMain" toolbarColor="light" indicatorColor="light"
     (tabSelect)="onTabSelect($event)">
     <super-tab *ngFor="let page of pages" [root]="page.pageName" [icon]="page.icon" [id]="page.id"></super-tab>
   </super-tabs>

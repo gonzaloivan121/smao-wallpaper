@@ -1,3 +1,14 @@
 page-image-view {
+    .tabsHidden .fixed-content,
+    .tabsHidden .scroll-content {
+        margin-top: 0px !important;
+    }
+    ion-content {
+        background: black !important;
+    }
 
+    .fixed-content ion-fab {
+        margin-top: 50px;
+        margin-right: 10px;
+    }
 }

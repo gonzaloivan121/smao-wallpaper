@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 import { Platform } from 'ionic-angular';
@@ -20,7 +20,8 @@ export class GalleryPage {
     public api: ApiProvider,
     public translate: TranslateService,
     public loader: LoadingController,
-    public platform: Platform
+    public platform: Platform,
+    public events: Events
   ) {
     this.getImages();
 
@@ -71,25 +72,8 @@ export class GalleryPage {
   }
 
   click(img: { id: number, name: string, url: string, description: string }) {
-    this.platform.ready().then(() => {
-
-    var loading = this.loader.create();
-    loading.present();
-
-      if (this.platform.is("android")) {
-        var appMinimizer = window["plugins"].appMinimize;
-        
-        if (appMinimizer) {
-          loading.dismiss();
-          appMinimizer.minimize();
-
-          var wallpaper = window["plugins"].wallpaper;
-          if (wallpaper) {
-            wallpaper.setImage(img.url);
-          }
-        }
-      }
-    });
+    this.navCtrl.push('ImageViewPage', { img: img });
+    this.events.publish('img:view', img);
   }
 
 }

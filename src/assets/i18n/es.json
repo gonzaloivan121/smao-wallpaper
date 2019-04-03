@@ -16,5 +16,14 @@
     "CLOSE_CANCEL": "Cancelar",
     "CLOSE_ACCEPT": "Cerrar App",
 
-    "STARTING": "Iniciando..."
+    "STARTING": "Iniciando...",
+
+    "INFO": "Información",
+    "ADD_FAVOURITES": "Añadir a favoritos",
+    "USE_AS": "Usar como fondo",
+    "PRINT": "Imprimir",
+    "EDIT": "Editar",
+    "SHARE": "Compartir",
+
+    "COMING_SOON": "Próximamente..."
 }

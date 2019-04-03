@@ -1,8 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, IonicPage, NavParams, AlertController, Platform } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, PopoverController, Platform } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
+import { PopoverPage } from './popover/popover';
 
 
 @IonicPage()
@@ -20,6 +21,8 @@ export class TabsPage {
 
   selectedTab = 0;
   showTab = true;
+  tabsClass = "";
+  img;
 
   @ViewChild(SuperTabs) superTabs: SuperTabs;
 
@@ -28,7 +31,8 @@ export class TabsPage {
     public navParams: NavParams,
     public translate: TranslateService,
     public events: Events,
-    public platform: Platform
+    public platform: Platform,
+    public popoverCtrl: PopoverController
   ) {
     this.pages.forEach(page => {
       this.translate.get(page.title).subscribe(val => {
@@ -36,12 +40,24 @@ export class TabsPage {
       });
     });
     
-    this.platform.ready().then((ready) => {
-      events.subscribe('app:backbuttonexit', (allowed) => {
-        if (!allowed) {
-          this.onTabSelect(null);
-        }
-      });
+    events.subscribe('app:backbuttonexit', (allowed) => {
+      if (!allowed) {
+        this.onTabSelect(null);
+      }
+    });
+
+    events.subscribe('tabs:hide', () => {
+      this.tabsClass = "tabsHidden";
+      this.superTabs.enableTabsSwipe(false);
+    });
+
+    events.subscribe('tabs:show', () => {
+      this.tabsClass = "";
+      this.superTabs.enableTabsSwipe(true);
+    });
+
+    events.subscribe('img:view', (image) => {
+      this.img = image;
     });
   }
 
@@ -50,16 +66,34 @@ export class TabsPage {
   }
 
   ionViewDidLoad() {
-    //this.superTabs.enableTabSwipe('galleryTab', true);
+    
+  }
+
+  menu(event) {
+    var popover = this.popoverCtrl.create(PopoverPage, { img: this.img });
+    popover.present({
+      ev: event
+    });
   }
 
   toogleToolbar() {
     this.showTab = !this.showTab;
     this.superTabs.showToolbar(this.showTab);
     this.events.publish('tabs:toogle', this.showTab);
+    if (this.showTab) {
+      this.events.publish('tabs:show');
+    } else {
+      this.events.publish('tabs:hide');
+    }
+    this.superTabs.enableTabSwipe('galleryTab', !this.showTab);
   }
 
   onTabSelect(ev?: any) {
+    if (this.superTabs.getActiveTab) {
+      this.superTabs.getActiveTab().goToRoot({
+        id: 'galleryTab'
+      });
+    }
     if (ev != null) {
       this.selectedTab = ev.index;
       this.superTabs.clearBadge(this.pages[ev.index].id);

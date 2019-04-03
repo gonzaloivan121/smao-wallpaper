@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.gonzaloivan.smaowallpapers" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget id="com.smao.wallpapers" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SMAO Wallpapers</name>
+    <description>Wallpaper Application made for Sin Miedo al Océano</description>
+    <author email="chaparro.gonzaloivan@gmail.com" href="https://github.com/gonzaloivan121">Gonzalo Iván Chaparro Barese</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -84,6 +84,10 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-fullscreen" spec="1.2.0" />
-    <engine name="android" spec="8.0.0" />
     <plugin name="cordova-plugin-wallpaper" spec="^0.1.1" />
+    <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="5.4.4">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.1+" />
+    </plugin>
+    <engine name="android" spec="8.0.0" />
 </widget>

@@ -1,5 +1,8 @@
-<ion-content no-padding>
+<ion-content no-padding [class]="classPage">
 
-  <img [src]="img.url" />
+  <zoom-area [(scale)]="scale" [(controls)]="showControls">
+    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" *ngIf="this.classPage == 'tabsHidden'" />
+    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" *ngIf="this.classPage == ''" />
+  </zoom-area>
 
 </ion-content>
