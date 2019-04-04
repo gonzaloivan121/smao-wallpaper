@@ -21,17 +21,14 @@ export class GalleryPage {
     public translate: TranslateService,
     public loader: LoadingController,
     public platform: Platform,
-    public events: Events
+    public events: Events,
+    public alertCtrl: AlertController
   ) {
     this.getImages();
 
-    this.translate.get(["PULLING_TEXT", "REFRESHING_TEXT"]).subscribe(val => {
+    translate.get(["PULLING_TEXT", "REFRESHING_TEXT"]).subscribe(val => {
       this.refreshingText = val;
     });
-  }
-
-  ionViewDidLoad() {
-    
   }
 
   doRefresh(refresher) {

@@ -41,12 +41,6 @@ export class TabsPage {
         page.title = val;
       });
     });
-    
-    events.subscribe('app:backbuttonexit', (allowed) => {
-      if (!allowed) {
-        this.onTabSelect(null);
-      }
-    });
 
     events.subscribe('tabs:hide', () => {
       this.tabsClass = "tabsHidden";
@@ -68,13 +62,16 @@ export class TabsPage {
     events.subscribe('img:view', (image) => {
       this.img = image;
     });
+
+    events.subscribe('app:goback', () => {
+      if (this.superTabs.getActiveTab()) {
+
+      }
+      console.log(this.superTabs.getActiveTab())
+    });
   }
 
   ngOnInit() {
-    
-  }
-
-  ionViewDidLoad() {
     
   }
 
@@ -98,7 +95,7 @@ export class TabsPage {
   }
 
   onTabSelect(ev?: any) {
-    if (this.superTabs.getActiveTab) {
+    if (this.superTabs.getActiveTab()) {
       this.superTabs.getActiveTab().goToRoot({
         id: 'galleryTab'
       });

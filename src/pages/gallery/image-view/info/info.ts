@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform } from 'ionic-angular/platform/platform';
+import { TabsPage } from '../../../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,8 @@ export class InfoPage {
     public transalte: TranslateService,
     public sanitization: DomSanitizer,
     public statusBar: StatusBar,
-    public platform: Platform
+    public platform: Platform,
+    public events: Events
   ) {
     statusBar.show();
     statusBar.backgroundColorByName('white');
@@ -38,7 +40,17 @@ export class InfoPage {
     }
 
     this.platform.registerBackButtonAction(() => {
-      this.navCtrl.pop();
+      if (navCtrl.canGoBack()) {
+        navCtrl.pop();
+      } else {
+        /*
+        if (navCtrl.getActive() == TabsPage) {
+
+        }*/
+        console.log(navCtrl.getActive())
+        statusBar.show();
+        navCtrl.setRoot(TabsPage);
+      }
     });
   }
 
@@ -51,13 +63,14 @@ export class InfoPage {
         });
       });
       toast.present();
-      this.navCtrl.push('TabsPage');
+      this.navCtrl.setRoot('TabsPage');
     }
   }
 
   ionViewWillLeave() {
     this.statusBar.backgroundColorByHexString('#28af50');
     this.statusBar.styleLightContent();
+    this.statusBar.hide();
   }
 
   copy(event) {

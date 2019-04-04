@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavController, ToastController, Events, NavParams } from 'ionic-angular';
+import { ViewController, NavController, ToastController, Events, NavParams, Platform } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -17,7 +17,8 @@ export class PopoverPage {
         public navParams: NavParams,
         public toastCtrl: ToastController,
         public translate: TranslateService,
-        public events: Events
+        public events: Events,
+        public platform: Platform
     ) {
         translate.get(["INFO", "ADD_FAVOURITES", "USE_AS", "PRINT", "EDIT", "SHARE"]).subscribe(val => {
             for (var param in val) {

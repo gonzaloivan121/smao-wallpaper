@@ -39,20 +39,17 @@ export class ImageViewPage {
         });
 
         platform.registerBackButtonAction(() => {
-            console.log("back button")
             if (this.classPage == "tabsHidden") {
                 events.publish('tabs:slide');
                 events.publish('tabs:show');
             } else {
-                console.log(navCtrl.indexOf(navCtrl.getActive()))
-                //navCtrl.pop();
+                this.navCtrl.popToRoot();
             }
-        }, 1);
+        });
     }
 
     ionViewWillLeave() {
         this.events.publish('tabs:show');
-        //console.log("Looks like I’m about to leave")
     }
 
 }

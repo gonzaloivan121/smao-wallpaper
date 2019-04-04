@@ -9,7 +9,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-    <ion-card *ngFor="let img of images">
+    <ion-card padding *ngFor="let img of images">
 
       <img [src]="img.url" (click)="click(img)" />
 
