@@ -6,7 +6,6 @@ import { Events } from 'ionic-angular';
 import { PopoverPage } from './popover/popover';
 import { StatusBar } from '@ionic-native/status-bar';
 
-
 @IonicPage()
 @Component({
   selector: 'page-tabs',
