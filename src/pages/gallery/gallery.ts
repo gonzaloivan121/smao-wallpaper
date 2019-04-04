@@ -1,5 +1,6 @@
+import { StatusBar } from '@ionic-native/status-bar';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events, App } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 import { Platform } from 'ionic-angular';
@@ -22,9 +23,11 @@ export class GalleryPage {
     public loader: LoadingController,
     public platform: Platform,
     public events: Events,
-    public alertCtrl: AlertController
+    public appCtrl: App,
+    public statusBar: StatusBar
   ) {
     this.getImages();
+    statusBar.show();
 
     translate.get(["PULLING_TEXT", "REFRESHING_TEXT"]).subscribe(val => {
       this.refreshingText = val;
@@ -48,8 +51,8 @@ export class GalleryPage {
       setTimeout(() => {
         this.images = [];
         this.getImages();
-        loading.dismiss();
         refresher.complete();
+        loading.dismiss();
 
         console.log('Async operation has ended');
       }, 1000);
@@ -69,7 +72,7 @@ export class GalleryPage {
   }
 
   click(img: { id: number, name: string, url: string, description: string, date: number, metadata?: object, camera?: object }) {
-    this.navCtrl.push('ImageViewPage', { img: img });
+    this.appCtrl.getRootNav().push('ImageViewPage', { img: img });
     this.events.publish('img:view', img);
   }
 

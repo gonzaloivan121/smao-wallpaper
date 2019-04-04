@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { PopoverPage } from '../pages/tabs/popover/popover';
+import { PopoverPage } from '../pages/popover/popover';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -20,6 +20,8 @@ import { CommonModule } from "@angular/common";
 import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ZoomAreaModule } from 'ionic2-zoom-area';
+
+import { File } from "@ionic-native/file";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider
   ]

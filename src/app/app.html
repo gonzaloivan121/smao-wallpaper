@@ -1,1 +1,9 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu side="right" [content]="content" swipeEnabled="false">
+    <ion-content>
+        <ion-list>
+            <p>some menu content, could be list items</p>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

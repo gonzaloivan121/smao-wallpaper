@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, NavParams, PopoverController, Platform, PageTransition } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, Platform, MenuController } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
-import { PopoverPage } from './popover/popover';
 import { StatusBar } from '@ionic-native/status-bar';
 
 @IonicPage()
@@ -22,6 +21,7 @@ export class TabsPage {
   selectedTab = 0;
   showTab = true;
   tabsClass = "";
+  toogleMenu: boolean = false;
   img;
 
   @ViewChild(SuperTabs) superTabs: SuperTabs;
@@ -32,24 +32,13 @@ export class TabsPage {
     public translate: TranslateService,
     public events: Events,
     public platform: Platform,
-    public popoverCtrl: PopoverController,
     public statusBar: StatusBar,
-    public transition: PageTransition
+    public menuCtrl: MenuController
   ) {
     this.pages.forEach(page => {
       this.translate.get(page.title).subscribe(val => {
         page.title = val;
       });
-    });
-
-    events.subscribe('tabs:hide', () => {
-      this.tabsClass = "tabsHidden";
-      this.superTabs.enableTabsSwipe(false);
-    });
-
-    events.subscribe('tabs:show', () => {
-      this.tabsClass = "";
-      this.superTabs.enableTabsSwipe(true);
     });
 
     events.subscribe('tabs:slide', () => {
@@ -62,44 +51,14 @@ export class TabsPage {
     events.subscribe('img:view', (image) => {
       this.img = image;
     });
-
-    events.subscribe('img:open', () => {
-      this.superTabs.enableTabsSwipe(false);
-    });
-
-    events.subscribe('img:close', () => {
-      this.superTabs.enableTabsSwipe(true);
-    });
-
-    events.subscribe('app:goback', () => {
-      if (this.superTabs.getActiveTab()) {
-
-      }
-      console.log(this.superTabs.getActiveTab())
-    });
   }
 
   ngOnInit() {
     
   }
 
-  menu(event) {
-    var popover = this.popoverCtrl.create(PopoverPage, { img: this.img });
-    popover.present({
-      ev: event
-    });
-  }
-
-  toogleToolbar() {
-    this.showTab = !this.showTab;
-    this.superTabs.showToolbar(this.showTab);
-    this.events.publish('tabs:toogle', this.showTab);
-    if (this.showTab) {
-      this.events.publish('tabs:show');
-    } else {
-      this.events.publish('tabs:hide');
-    }
-    this.superTabs.enableTabSwipe('galleryTab', !this.showTab);
+  toogleSideMenu() {
+    this.menuCtrl.open();
   }
 
   onTabSelect(ev?: any) {

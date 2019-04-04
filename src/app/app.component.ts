@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController, LoadingOptions } from 'ionic-angular';
+import { Platform, LoadingController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -23,7 +23,8 @@ export class MyApp {
     events: Events,
     app: App,
     loading: LoadingController,
-    public alert: AlertController
+    public alert: AlertController,
+    public menu: MenuController
   ) {
     var load = loading.create();
     load.present();
@@ -48,7 +49,7 @@ export class MyApp {
 
       setTimeout(() => {
         load.dismiss();
-        platform.registerBackButtonAction(() => {
+        /*platform.registerBackButtonAction(() => {
           let nav = app.getActiveNavs()[0];
           let activeView = nav.getActive();
   
@@ -61,18 +62,9 @@ export class MyApp {
           } else { // the actual page is not GalleryPage
             console.log('!galleryPage')
           }
-        });
+        });*/
       }, 1000);      
 
-      events.subscribe('tabs:toogle', toogle => {
-        console.log(toogle)
-        this.toogleToolbar = toogle;
-        if (!this.toogleToolbar) {
-          statusBar.hide();
-        } else {
-          statusBar.show();
-        }
-      });
     });
     
   }

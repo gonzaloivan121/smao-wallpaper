@@ -1,6 +1,9 @@
+import { ZoomAreaProvider } from 'ionic2-zoom-area';
+import { StatusBar } from '@ionic-native/status-bar';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Events, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events, Platform, PopoverController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { PopoverPage } from '../../popover/popover';
 
 @IonicPage()
 @Component({
@@ -13,46 +16,48 @@ export class ImageViewPage {
         id: number,
         name: string,
         url: string,
-        description: string
+        description: string,
+        date: number,
+        metadata?: object,
+        camera?: object
     };
 
-    classPage = "";
+    scale = 1;
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         public translate: TranslateService,
-        public loader: LoadingController,
-        public events: Events,
-        public platform: Platform
+        public popoverCtrl: PopoverController,
+        public statusBar: StatusBar,
+        public zoomAreaProvider: ZoomAreaProvider
     ) {
         if (navParams.get('img')) {
             this.img = navParams.get('img');
         }
+    }
 
-        events.publish('img:open');
+    ionViewWillEnter() {
+        this.statusBar.hide();
+    }
 
-        events.subscribe('tabs:hide', () => {
-            this.classPage = "tabsHidden";
-        });
+    afterZoomIn(e) {
+        console.log(e)
+    }
 
-        events.subscribe('tabs:show', () => {
-            this.classPage = "";
-        });
-
-        platform.registerBackButtonAction(() => {
-            if (this.classPage == "tabsHidden") {
-                events.publish('tabs:slide');
-                events.publish('tabs:show');
-            } else {
-                this.navCtrl.popToRoot();
-            }
-        });
+    afterZoomOut(e) {
+        console.log(e)
     }
 
     ionViewWillLeave() {
-        this.events.publish('tabs:show');
-        this.events.publish('img:close');
+        this.statusBar.show();
+    }
+
+    menu(event) {
+        var popover = this.popoverCtrl.create(PopoverPage, { img: this.img });
+        popover.present({
+            ev: event
+        });
     }
 
 }

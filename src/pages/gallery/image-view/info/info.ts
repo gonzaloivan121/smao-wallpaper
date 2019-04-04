@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform } from 'ionic-angular/platform/platform';
-import { TabsPage } from '../../../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -26,7 +25,6 @@ export class InfoPage {
     public platform: Platform,
     public events: Events
   ) {
-    statusBar.show();
     statusBar.backgroundColorByName('white');
     statusBar.styleDefault();
 
@@ -38,16 +36,6 @@ export class InfoPage {
       var txt = "background-image: url('" + this.img.url + "');";
       this.style = this.sanitization.bypassSecurityTrustStyle(txt);
     }
-
-    this.platform.registerBackButtonAction(() => {
-      if (navCtrl.canGoBack()) {
-        navCtrl.pop();
-      } else {
-        if (navCtrl.setRoot(TabsPage)) {
-          statusBar.show();
-        }
-      }
-    });
   }
 
   ionViewDidLoad() {
@@ -61,6 +49,10 @@ export class InfoPage {
       toast.present();
       this.navCtrl.setRoot('TabsPage');
     }
+  }
+
+  ionViewWillEnter() {
+    this.statusBar.show();
   }
 
   ionViewWillLeave() {

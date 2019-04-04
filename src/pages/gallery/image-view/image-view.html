@@ -1,8 +1,17 @@
-<ion-content no-padding [class]="classPage">
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="menu($event)" style="margin-right: 15px !important;">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
 
   <zoom-area [(scale)]="scale" [(controls)]="showControls">
-    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" *ngIf="this.classPage == 'tabsHidden'" />
-    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" *ngIf="this.classPage == ''" />
+    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" />
   </zoom-area>
 
 </ion-content>

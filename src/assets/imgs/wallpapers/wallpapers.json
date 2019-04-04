@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "name": "Sin Miedo al Océano",
+        "name": "Sin Miedo al Océano: Trascender",
         "url": "assets/imgs/wallpapers/img/00.jpg",
         "description": "Este fondo lo ha hecho César porque es un grandioso :p",
         "date": 1554059235,
@@ -9,7 +9,7 @@
             "resolution": "1080 x 1920",
             "size": "647 KB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/00.jpg"
+            "filename": "00.jpg"
         },
         "camera": {
             "phone": "Xiaomi Mi A1",
@@ -20,28 +20,28 @@
     },
     {
         "id": 1,
-        "name": "01",
+        "name": "Sin Miedo Al Océano: Mi Reina Entre Llamas",
         "url": "assets/imgs/wallpapers/img/01.jpg",
         "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
-        "date": 1548408025,
+        "date": 1554405733,
         "metadata": {
             "resolution": "1080 x 1920",
-            "size": "215 KB",
+            "size": "1,66 MB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/01.jpg"
+            "filename": "01.jpg"
         }
     },
     {
         "id": 2,
-        "name": "02",
+        "name": "Sin Miedo Al Océano: Luz",
         "url": "assets/imgs/wallpapers/img/02.jpg",
         "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
-        "date": 1530395733,
+        "date": 1554406760,
         "metadata": {
             "resolution": "1080 x 1920",
-            "size": "549 KB",
+            "size": "1,63 MB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/02.jpg"
+            "filename": "02.jpg"
         },
         "camera": {
             "phone": "Xiaomi Pocophone F1",
@@ -60,7 +60,7 @@
             "resolution": "1080 x 1920",
             "size": "85 KB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/03.jpg"
+            "filename": "03.jpg"
         }
     },
     {
@@ -73,7 +73,7 @@
             "resolution": "1080 x 1920",
             "size": "185 KB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/04.jpg"
+            "filename": "04.jpg"
         }
     },
     {
@@ -86,7 +86,7 @@
             "resolution": "1080 x 1920",
             "size": "174 KB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/05.jpg"
+            "filename": "05.jpg"
         }
     },
     {
@@ -99,7 +99,7 @@
             "resolution": "1080 x 1920",
             "size": "83 KB",
             "mp": "2,07MP",
-            "url": "/assets/imgs/wallpapers/img/06.jpg"
+            "filename": "06.jpg"
         },
         "camera": {
             "phone": "Xiaomi Mi A1",

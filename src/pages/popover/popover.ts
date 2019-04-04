@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavController, ToastController, Events, NavParams, Platform } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { File } from '@ionic-native/file'; 
 
 @Component({
     selector: 'page-popover',
@@ -18,9 +19,10 @@ export class PopoverPage {
         public toastCtrl: ToastController,
         public translate: TranslateService,
         public events: Events,
-        public platform: Platform
+        public platform: Platform,
+        public file: File
     ) {
-        translate.get(["INFO", "ADD_FAVOURITES", "USE_AS", "PRINT", "EDIT", "SHARE"]).subscribe(val => {
+        translate.get(["INFO", "ADD_FAVOURITES", "USE_AS", "SAVE", "PRINT", "EDIT", "SHARE"]).subscribe(val => {
             for (var param in val) {
                 this.list.push({
                     title: val[param],
@@ -32,9 +34,10 @@ export class PopoverPage {
         this.list[0].action = "info"; 
         this.list[1].action = "fav";
         this.list[2].action = "use";
-        this.list[3].action = "print";
-        this.list[4].action = "edit";
-        this.list[5].action = "share";
+        this.list[3].action = "save";
+        this.list[4].action = "print";
+        this.list[5].action = "edit";
+        this.list[6].action = "share";
 
         if (this.navParams.get("img")) {
             this.img = this.navParams.get("img");
@@ -79,7 +82,26 @@ export class PopoverPage {
                     });
                     newToast.present();
                     console.log(error);
+                    setTimeout(() => {
+                        newToast.dismiss();
+                    }, 1500);
                 }
+            break;
+
+            case "save":
+                this.file.checkDir("file:///storage/emulated/0/", "Pictures").then(pictures => {
+                    this.file.checkDir("file:///storage/emulated/0/Pictures", "SMAO").then(smao => {
+                        this.file.createFile("file:///storage/emulated/0/Pictures/SMAO", this.img.metadata.filename, true).then(fileEntry => {
+                            console.log(fileEntry)
+                        });
+                    }).catch(err => {
+                        this.file.createDir("file:///storage/emulated/0/Pictures", "SMAO", false).then(fullfilled => {
+                            
+                        }).catch(err => {
+                            
+                        })
+                    });
+                });
             break;
 
             case "share":
@@ -98,6 +120,9 @@ export class PopoverPage {
                     });
                     toast.present();
                     console.log(error);
+                    setTimeout(() => {
+                        toast.dismiss();
+                    }, 1500);
                 }
             break;
 
