@@ -13,10 +13,25 @@
             <p>I've had a pretty messed up day. If we just...</p>
         </button>
 
-        <button ion-item padding (click)="copy($event)">
+        <button ion-item padding (click)="copy($event)" *ngIf="img.metadata">
             <ion-icon name="image" item-start></ion-icon>
             <h2>{{ img.metadata.url }}</h2>
-            <p>{{ img.metadata.mp }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ img.metadata.resolution }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ img.metadata.size }}</p>
+            <p>
+                {{ img.metadata.mp }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ img.metadata.resolution }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ img.metadata.size }}
+            </p>
+        </button>
+
+        <button ion-item padding (click)="copy($event)" *ngIf="img.camera">
+            <ion-icon name="aperture" item-start></ion-icon>
+            <h2>{{ img.camera.phone }}</h2>
+            <p>
+                {{ img.camera.aperture }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ img.camera.shutterSpeed }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ img.camera.focalLength }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ img.camera.ISO }}
+            </p>
         </button>
     </ion-list>
 </ion-content>

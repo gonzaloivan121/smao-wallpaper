@@ -68,7 +68,7 @@ export class GalleryPage {
     });
   }
 
-  click(img: { id: number, name: string, url: string, description: string, date: number, metadata?: object }) {
+  click(img: { id: number, name: string, url: string, description: string, date: number, metadata?: object, camera?: object }) {
     this.navCtrl.push('ImageViewPage', { img: img });
     this.events.publish('img:view', img);
   }

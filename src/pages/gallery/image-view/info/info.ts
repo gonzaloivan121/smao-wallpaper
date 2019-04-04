@@ -43,15 +43,9 @@ export class InfoPage {
       if (navCtrl.canGoBack()) {
         navCtrl.pop();
       } else {
-        
-        if (navCtrl.getActive().component == TabsPage) {
-          console.log(navCtrl.getActive())
+        if (navCtrl.setRoot(TabsPage)) {
+          statusBar.show();
         }
-        
-        statusBar.show();
-        navCtrl.setRoot(TabsPage);
-
-
       }
     });
   }

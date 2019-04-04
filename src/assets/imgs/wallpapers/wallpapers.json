@@ -10,6 +10,12 @@
             "size": "647 KB",
             "mp": "2,07MP",
             "url": "/assets/imgs/wallpapers/img/00.jpg"
+        },
+        "camera": {
+            "phone": "Xiaomi Mi A1",
+            "aperture": "f/2,2",
+            "shutterSpeed": "1/2982",
+            "ISO": "ISO100"
         }
     },
     {
@@ -36,6 +42,12 @@
             "size": "549 KB",
             "mp": "2,07MP",
             "url": "/assets/imgs/wallpapers/img/02.jpg"
+        },
+        "camera": {
+            "phone": "Xiaomi Pocophone F1",
+            "aperture": "f/1,9",
+            "shutterSpeed": "15/1",
+            "ISO": "ISO300"
         }
     },
     {
@@ -88,6 +100,12 @@
             "size": "83 KB",
             "mp": "2,07MP",
             "url": "/assets/imgs/wallpapers/img/06.jpg"
+        },
+        "camera": {
+            "phone": "Xiaomi Mi A1",
+            "aperture": "f/2,2",
+            "shutterSpeed": "1/2982",
+            "ISO": "ISO100"
         }
     }
 ]

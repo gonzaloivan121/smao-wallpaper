@@ -63,6 +63,14 @@ export class TabsPage {
       this.img = image;
     });
 
+    events.subscribe('img:open', () => {
+      this.superTabs.enableTabsSwipe(false);
+    });
+
+    events.subscribe('img:close', () => {
+      this.superTabs.enableTabsSwipe(true);
+    });
+
     events.subscribe('app:goback', () => {
       if (this.superTabs.getActiveTab()) {
 

@@ -30,6 +30,8 @@ export class ImageViewPage {
             this.img = navParams.get('img');
         }
 
+        events.publish('img:open');
+
         events.subscribe('tabs:hide', () => {
             this.classPage = "tabsHidden";
         });
@@ -50,6 +52,7 @@ export class ImageViewPage {
 
     ionViewWillLeave() {
         this.events.publish('tabs:show');
+        this.events.publish('img:close');
     }
 
 }
