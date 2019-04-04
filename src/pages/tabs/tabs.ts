@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, NavParams, PopoverController, Platform } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, PopoverController, Platform, PageTransition } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
@@ -34,7 +34,8 @@ export class TabsPage {
     public events: Events,
     public platform: Platform,
     public popoverCtrl: PopoverController,
-    public statusBar: StatusBar
+    public statusBar: StatusBar,
+    public transition: PageTransition
   ) {
     this.pages.forEach(page => {
       this.translate.get(page.title).subscribe(val => {
