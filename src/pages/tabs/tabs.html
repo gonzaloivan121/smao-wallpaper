@@ -2,7 +2,7 @@
   <ion-navbar color="secondary">
     <ion-title>{{ pages[selectedTab].title }}</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="menu($event)" *ngIf="tabsClass !== ''" style="margin-right: 15px !important;">
+      <button ion-button (click)="menu($event)" *ngIf="tabsClass != ''" style="margin-right: 15px !important;">
         <ion-icon name="more"></ion-icon>
       </button>
       <button ion-button (click)="toogleToolbar()">

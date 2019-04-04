@@ -3,36 +3,91 @@
         "id": 0,
         "name": "Sin Miedo al Océano",
         "url": "assets/imgs/wallpapers/img/00.jpg",
-        "description": "Esta foto la ha hecho César porque es un grandioso :p"
+        "description": "Este fondo lo ha hecho César porque es un grandioso :p",
+        "date": 1554059235,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "647 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/00.jpg"
+        }
     },
     {
         "id": 1,
         "name": "01",
         "url": "assets/imgs/wallpapers/img/01.jpg",
-        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id."
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1548408025,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "215 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/01.jpg"
+        }
     },
     {
         "id": 2,
         "name": "02",
         "url": "assets/imgs/wallpapers/img/02.jpg",
-        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id."
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1530395733,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "549 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/02.jpg"
+        }
     },
     {
         "id": 3,
         "name": "03",
         "url": "assets/imgs/wallpapers/img/03.jpg",
-        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id."
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1521576071,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "85 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/03.jpg"
+        }
     },
     {
         "id": 4,
         "name": "04",
         "url": "assets/imgs/wallpapers/img/04.jpg",
-        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id."
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1518710705,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "185 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/04.jpg"
+        }
     },
     {
         "id": 5,
         "name": "05",
         "url": "assets/imgs/wallpapers/img/05.jpg",
-        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id."
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1514811661,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "174 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/05.jpg"
+        }
+    },
+    {
+        "id": 6,
+        "name": "06",
+        "url": "assets/imgs/wallpapers/img/06.jpg",
+        "description": "Lorem ipsum dolor sit amet, pro an alii saperet eloquentiam, idque malorum ancillae at sea, nam civibus legendos id.",
+        "date": 1514200271,
+        "metadata": {
+            "resolution": "1080 x 1920",
+            "size": "83 KB",
+            "mp": "2,07MP",
+            "url": "/assets/imgs/wallpapers/img/06.jpg"
+        }
     }
 ]

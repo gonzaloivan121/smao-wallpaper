@@ -1,9 +1,10 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage, NavParams, PopoverController, Platform } from 'ionic-angular';
 import { SuperTabs } from 'ionic2-super-tabs';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
 import { PopoverPage } from './popover/popover';
+import { StatusBar } from '@ionic-native/status-bar';
 
 
 @IonicPage()
@@ -32,7 +33,8 @@ export class TabsPage {
     public translate: TranslateService,
     public events: Events,
     public platform: Platform,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    public statusBar: StatusBar
   ) {
     this.pages.forEach(page => {
       this.translate.get(page.title).subscribe(val => {
@@ -54,6 +56,13 @@ export class TabsPage {
     events.subscribe('tabs:show', () => {
       this.tabsClass = "";
       this.superTabs.enableTabsSwipe(true);
+    });
+
+    events.subscribe('tabs:slide', () => {
+      this.tabsClass = "";
+      this.showTab = true;
+      this.superTabs.showToolbar(true);
+      this.statusBar.show();
     });
 
     events.subscribe('img:view', (image) => {

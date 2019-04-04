@@ -3,6 +3,7 @@ import { ViewController, NavController, ToastController, Events, NavParams } fro
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
+    selector: 'page-popover',
     templateUrl: 'popover.html'
 })
 export class PopoverPage {
@@ -67,8 +68,16 @@ export class PopoverPage {
                             addPixelsY: -40  // added a negative value to move it up a bit (default 0)
                         }
                     );
+
                 } catch (error) {
-                    console.error(error);
+                    var newToast;
+                    this.translate.get("ALERT_SUBTITLE").subscribe(val => {
+                        newToast = this.toastCtrl.create({
+                            message: val
+                        });
+                    });
+                    newToast.present();
+                    console.log(error);
                 }
             break;
 
@@ -78,10 +87,17 @@ export class PopoverPage {
                     console.log(this.img)
                     share = window["plugins"].socialsharing;
                     share.share(null, null, this.img.url);
+
                 } catch (error) {
-                    console.error(error);
+                    var toast;
+                    this.translate.get("ALERT_SUBTITLE").subscribe(val => {
+                        toast = this.toastCtrl.create({
+                            message: val
+                        });
+                    });
+                    toast.present();
+                    console.log(error);
                 }
-                
             break;
 
             default:

@@ -1,9 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>info</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{ "INFO" | translate }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+    <div class="img-container" [style]="style"></div>
+    <ion-list padding>
+        <button ion-item padding (click)="copy($event)">
+            <ion-icon name="calendar" item-start></ion-icon>
+            <h2>Herbology</h2>
+            <p>I've had a pretty messed up day. If we just...</p>
+        </button>
 
+        <button ion-item padding (click)="copy($event)">
+            <ion-icon name="image" item-start></ion-icon>
+            <h2>{{ img.metadata.url }}</h2>
+            <p>{{ img.metadata.mp }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ img.metadata.resolution }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ img.metadata.size }}</p>
+        </button>
+    </ion-list>
 </ion-content>

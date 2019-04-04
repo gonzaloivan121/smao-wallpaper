@@ -89,5 +89,7 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="5.4.4">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.1+" />
     </plugin>
+    <plugin name="cordova-plugin-splashscreen" spec="4.0.0" />
+    <plugin name="cordova-plugin-appminimize" spec="1.0.1" />
     <engine name="android" spec="8.0.0" />
 </widget>
