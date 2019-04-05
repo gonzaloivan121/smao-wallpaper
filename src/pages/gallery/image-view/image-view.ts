@@ -1,7 +1,7 @@
 import { ZoomAreaProvider } from 'ionic2-zoom-area';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Events, Platform, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, PopoverController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { PopoverPage } from '../../popover/popover';
 
@@ -30,7 +30,8 @@ export class ImageViewPage {
         public translate: TranslateService,
         public popoverCtrl: PopoverController,
         public statusBar: StatusBar,
-        public zoomAreaProvider: ZoomAreaProvider
+        public zoomAreaProvider: ZoomAreaProvider,
+        public menuCtrl: MenuController
     ) {
         if (navParams.get('img')) {
             this.img = navParams.get('img');

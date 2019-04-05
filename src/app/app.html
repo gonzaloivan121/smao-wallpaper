@@ -1,7 +1,7 @@
 <ion-menu side="right" [content]="content" swipeEnabled="false">
     <ion-content>
         <ion-list>
-            <p>some menu content, could be list items</p>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">{{ p.title }}</button>
         </ion-list>
     </ion-content>
 </ion-menu>

@@ -15,11 +15,11 @@
 
         <button ion-item padding (click)="copy($event)" *ngIf="img.metadata">
             <ion-icon name="image" item-start></ion-icon>
-            <h2>{{ img.metadata.url }}</h2>
+            <h2>{{ '/' + img.url }}</h2>
             <p>
-                {{ img.metadata.mp }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ img.metadata.resolution }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ img.metadata.size }}
+                <label *ngIf="img.metadata.mp">{{ img.metadata.mp }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label *ngIf="img.metadata.resolution">{{ img.metadata.resolution }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label *ngIf="img.metadata.size">{{ img.metadata.size }}</label>
             </p>
         </button>
 
@@ -27,10 +27,10 @@
             <ion-icon name="aperture" item-start></ion-icon>
             <h2>{{ img.camera.phone }}</h2>
             <p>
-                {{ img.camera.aperture }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ img.camera.shutterSpeed }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ img.camera.focalLength }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ img.camera.ISO }}
+                <label *ngIf="img.camera.aperture">{{ img.camera.aperture }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label *ngIf="img.camera.shutterSpeed">{{ img.camera.shutterSpeed }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label *ngIf="img.camera.focalLength">{{ img.camera.focalLength }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label *ngIf="img.camera.ISO">{{ img.camera.ISO }}</label>
             </p>
         </button>
     </ion-list>

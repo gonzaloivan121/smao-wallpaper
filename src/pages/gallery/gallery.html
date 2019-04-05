@@ -1,4 +1,4 @@
-<ion-content padding>
+<ion-content padding #contentRef (ionScroll)="scrolling($event)">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)" class="push-to-update">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"

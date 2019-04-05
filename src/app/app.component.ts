@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { Platform, LoadingController, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, LoadingController, MenuController, AlertController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { Events, App, AlertController } from 'ionic-angular';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -12,16 +11,25 @@ import { TabsPage } from '../pages/tabs/tabs';
 })
 export class MyApp {
 
+  @ViewChild(Nav) nav: Nav;
+
   rootPage: any = TabsPage;
   toogleToolbar: boolean = true;
+
+  pages: object[] = [
+    { title: 'WELCOME', component: 'WelcomePage', icon: '' },
+    { title: 'HOME', component: 'TabsPage', icon: '' },
+    { title: 'ABOUT', component: 'AboutPage', icon: '' },
+    { title: 'CONTACT', component: 'ContactPage', icon: '' },
+    { title: 'SETTINGS', component: 'SettingsPage', icon: '' },
+    { title: 'EXIT', component: 'ExitPage', icon: '' }
+  ]
 
   constructor(
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     translate: TranslateService,
-    events: Events,
-    app: App,
     loading: LoadingController,
     public alert: AlertController,
     public menu: MenuController
@@ -49,24 +57,20 @@ export class MyApp {
 
       setTimeout(() => {
         load.dismiss();
-        /*platform.registerBackButtonAction(() => {
-          let nav = app.getActiveNavs()[0];
-          let activeView = nav.getActive();
-  
-          if (activeView.name === "GalleryPage") {
-            if (nav.canGoBack()) {
-              nav.pop();
-            } else {
-              console.log('cant go back')
-            }
-          } else { // the actual page is not GalleryPage
-            console.log('!galleryPage')
-          }
-        });*/
-      }, 1000);      
-
+      }, 1000);
     });
-    
+  }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    console.log(this.nav.getActive().component)
+    if (this.nav.getActive().component == page.component) {
+      this.nav.push(page.component);
+    } else {
+      console.log('==')
+    }
+    this.menu.close();
   }
 
 }

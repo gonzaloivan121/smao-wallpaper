@@ -44,7 +44,7 @@ export class PopoverPage {
         }
     }
 
-    close() {
+    closePopover() {
         this.viewCtrl.dismiss();
     }
 
@@ -52,6 +52,7 @@ export class PopoverPage {
         switch (item.action) {
             case "info":
                 this.navCtrl.push('InfoPage', { img: this.img });
+                this.closePopover();
             break;
 
             case "use":
@@ -86,22 +87,37 @@ export class PopoverPage {
                         newToast.dismiss();
                     }, 1500);
                 }
+                this.closePopover();
             break;
 
             case "save":
-                this.file.checkDir("file:///storage/emulated/0/", "Pictures").then(pictures => {
-                    this.file.checkDir("file:///storage/emulated/0/Pictures", "SMAO").then(smao => {
-                        this.file.createFile("file:///storage/emulated/0/Pictures/SMAO", this.img.metadata.filename, true).then(fileEntry => {
-                            console.log(fileEntry)
-                        });
-                    }).catch(err => {
-                        this.file.createDir("file:///storage/emulated/0/Pictures", "SMAO", false).then(fullfilled => {
-                            
+                if (this.platform.is('cordova')) {
+                    this.file.checkDir("file:///storage/emulated/0/", "Pictures").then(pictures => {
+                        this.file.checkDir("file:///storage/emulated/0/Pictures", "SMAO").then(smao => {
+                            this.file.createFile("file:///storage/emulated/0/Pictures/SMAO", this.img.metadata.filename, true).then(fileEntry => {
+                                console.log(fileEntry)
+                            });
                         }).catch(err => {
-                            
-                        })
+                            this.file.createDir("file:///storage/emulated/0/Pictures", "SMAO", false).then(fullfilled => {
+                                
+                            }).catch(err => {
+                                
+                            })
+                        });
                     });
-                });
+                } else {
+                    var toast;
+                    this.translate.get("ALERT_SUBTITLE").subscribe(val => {
+                        toast = this.toastCtrl.create({
+                            message: val
+                        });
+                    });
+                    toast.present();
+                    setTimeout(() => {
+                        toast.dismiss();
+                    }, 1500);
+                }
+                this.closePopover();
             break;
 
             case "share":
@@ -124,6 +140,7 @@ export class PopoverPage {
                         toast.dismiss();
                     }, 1500);
                 }
+                this.closePopover();
             break;
 
             default:
@@ -137,6 +154,7 @@ export class PopoverPage {
                     });
                 });
                 toast.present();
+                this.closePopover();
             break;
         }
     }

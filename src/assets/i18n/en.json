@@ -8,7 +8,7 @@
     "LOADING": "Loading...",
 
     "ALERT_TITLE": "Not a Device",
-    "ALERT_SUBTITLE": "You are not in a device",
+    "ALERT_SUBTITLE": "You are not on a device",
     "OK": "Go to the picture",
 
     "CLOSE_TITLE": "App termination",
@@ -21,6 +21,7 @@
     "INFO": "Information",
     "ADD_FAVOURITES": "Add to favourites",
     "USE_AS": "Use as",
+    "SAVE": "Save",
     "PRINT": "Print",
     "EDIT": "Edit",
     "SHARE": "Share",

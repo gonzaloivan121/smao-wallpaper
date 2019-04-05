@@ -1,6 +1,6 @@
 import { StatusBar } from '@ionic-native/status-bar';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Events, App } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController, Events, App, Content } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 import { Platform } from 'ionic-angular';
@@ -11,6 +11,8 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'gallery.html',
 })
 export class GalleryPage {
+
+  @ViewChild("contentRef") contentHandle: Content;
 
   images: Array<any> = [];
   refreshingText: any = {};
@@ -32,6 +34,10 @@ export class GalleryPage {
     translate.get(["PULLING_TEXT", "REFRESHING_TEXT"]).subscribe(val => {
       this.refreshingText = val;
     });
+  }
+
+  ionViewWillEnter() {
+
   }
 
   doRefresh(refresher) {
@@ -61,6 +67,19 @@ export class GalleryPage {
 
   doPulling(pull) {
     pull.pullMax = 250;
+  }
+
+  scrolling(ev) {
+    if (ev != null) {
+      this.events.subscribe('goTo:top', () => {
+        if (ev.scrollTop > 0) {
+          var y = ev.scrollTop;
+          this.contentHandle.scrollTo(0, -y, 1000);
+        }
+      });
+    } else {
+      console.log('fallo')
+    }
   }
 
   getImages() {

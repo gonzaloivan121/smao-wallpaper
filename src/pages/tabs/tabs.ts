@@ -61,12 +61,12 @@ export class TabsPage {
     this.menuCtrl.open();
   }
 
-  onTabSelect(ev?: any) {
-    if (this.superTabs.getActiveTab()) {
-      this.superTabs.getActiveTab().goToRoot({
-        id: 'galleryTab'
-      });
+  onTabSelect(ev?: any) {    
+    if (this.superTabs.getActiveTab().root == "GalleryPage" ) {
+      this.events.publish('goTo:top');
+      console.log('entrando en galeria')
     }
+    
     if (ev != null) {
       this.selectedTab = ev.index;
       this.superTabs.clearBadge(this.pages[ev.index].id);

@@ -10,8 +10,10 @@
 
 <ion-content no-padding>
 
-  <zoom-area [(scale)]="scale" [(controls)]="showControls">
-    <img [src]="img.url" width="100%" style="margin-bottom: -5px;" />
+  <zoom-area [(scale)]="scale" [(controls)]="showControls" class="zoomArea">
+      <div class="frame">
+          <span class="helper"></span><img [src]="img.url" width="100%" />
+      </div>
   </zoom-area>
 
 </ion-content>
